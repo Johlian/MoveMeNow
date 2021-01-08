@@ -26,7 +26,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onServerKickEvent(ServerKickEvent ev) {
         // Protection against NullPointerException
-
+        if(ev.getCause() == Cause.LOST_CONNECTION)return;
         ServerInfo kickedFrom = null;
 
         if (ev.getPlayer().getServer() != null) {
